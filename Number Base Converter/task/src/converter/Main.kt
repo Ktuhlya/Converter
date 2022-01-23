@@ -9,11 +9,11 @@ const val DEC = 10
 const val HEX = 16
 val hexTable = arrayListOf<String>("0", "1", "2", "3", "4", "5",
     "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
-
+val testList = mutableListOf<String>()
 
 
 fun main() {
-    var testList = mutableListOf<String>()
+
     for (i in 0..9) {
          testList. add(i.toString())
     }
@@ -65,23 +65,43 @@ fun workFun() {
     val targetBaseEx = readLine()!!.toBigInteger()
     println("inputNumber")
     val inputNumberEx = readLine()!!
-    var (quotient, remainder) = inputNumberEx.toBigInteger()
-        .divideAndRemainder(targetBaseEx)
+  //  var (quotient, remainder) = inputNumberEx.toBigInteger()
+  //      .divideAndRemainder(targetBaseEx)
     var result =BigInteger.valueOf(0)
 
-   for (i in inputNumberEx.length-1 downTo 0) {
-       val targetPow = sourceBaseEx.toDouble()
-        result +=BigInteger.valueOf ((inputNumberEx[i].digitToInt() *
-               targetPow.pow(inputNumberEx.length-i-1)).toLong())
-       println(result)
-   }
+  if (sourceBaseEx.toInt() > 10) {
+     for (i in inputNumberEx.length-1 downTo 0) {
+         val targetPow = sourceBaseEx.toDouble()
+         result += BigInteger.valueOf(
+             (testList.indexOf(inputNumberEx[i].toString()) *
+                     targetPow.pow(inputNumberEx.length-i-1)).toLong()
+         )
+     }
+      println(result)
 
-       println(result)
+  }else {
+
+      for (i in inputNumberEx.length - 1 downTo 0) {
+          val targetPow = sourceBaseEx.toDouble()
+          result += BigInteger.valueOf(
+              (inputNumberEx[i].digitToInt() *
+                      targetPow.pow(inputNumberEx.length - i - 1)).toLong()
+          )
+      }
+      println(result)
+  }
+
 
        main()
 }
 /*
-
+fun hexToDec(hex: String) {
+   var dec = 0
+    for (i in hex.length-1 downTo  0) {
+        val hexPow = 16.0
+        dec += (hexTable.indexOf(hex[i].toString())
+                * hexPow.pow(hex.length - 1 - i)).toInt()
+    }
 
 
 formula
