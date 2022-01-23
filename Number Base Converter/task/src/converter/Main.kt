@@ -60,26 +60,27 @@ fun main() {
 
 fun workFun() {
     println("sourceBase")
-    val sourceBaseEx = readLine()!!.toBigInteger()
+    var sourceBaseEx = readLine()!!.toBigInteger()
     println("targetBase")
-    val targetBaseEx = readLine()!!.toBigInteger()
+    var targetBaseEx = readLine()!!.toBigInteger()
     println("inputNumber")
-    val inputNumberEx = readLine()!!
-  //  var (quotient, remainder) = inputNumberEx.toBigInteger()
-  //      .divideAndRemainder(targetBaseEx)
-    var result =BigInteger.valueOf(0)
+    var inputNumberEx = readLine()!!
+    //  var (quotient, remainder) = inputNumberEx.toBigInteger()
+    //      .divideAndRemainder(targetBaseEx)
+    var result = BigInteger.valueOf(0)
 
-  if (sourceBaseEx.toInt() > 10) {
-     for (i in inputNumberEx.length-1 downTo 0) {
-         val targetPow = sourceBaseEx.toDouble()
-         result += BigInteger.valueOf(
-             (testList.indexOf(inputNumberEx[i].toString()) *
-                     targetPow.pow(inputNumberEx.length-i-1)).toLong()
-         )
-     }
-      println(result)
-
-  }else {
+    // if (sourceBaseEx.toInt() > 10) {
+    for (i in inputNumberEx.length - 1 downTo 0) {
+        val targetPow = sourceBaseEx.toDouble()
+        result += BigInteger.valueOf(
+            (testList.indexOf(inputNumberEx[i].toString()) *
+                    targetPow.pow(inputNumberEx.length - i - 1)).toLong()
+        )
+    }
+    println(result)
+    workFun()
+}
+ /* }else {
 
       for (i in inputNumberEx.length - 1 downTo 0) {
           val targetPow = sourceBaseEx.toDouble()
@@ -107,7 +108,7 @@ fun hexToDec(hex: String) {
 formula
 result = inputNumberEx.Index * targetBase.pow(inputNumbEx.index)
  */
-
+*/
 
 
 ////////////////////////////////////////
