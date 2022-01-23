@@ -1,4 +1,5 @@
 package converter
+import java.math.BigInteger
 import java.util.*
 import kotlin.math.*
 
@@ -9,12 +10,27 @@ const val HEX = 16
 val hexTable = arrayListOf<String>("0", "1", "2", "3", "4", "5",
     "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
 
+
+
 fun main() {
+    var testList = mutableListOf<String>()
+    for (i in 0..9) {
+         testList. add(i.toString())
+    }
+    for (i in 'A'..'Z') {
+        testList.add(i.toString())
+    }
+
+
+    println(testList)
+    workFun()
     print("Do you want to convert /from decimal or /to decimal? " +
             "(To quit type /exit) > ")
     var typeConversion = readLine()!!
     var inputNum = 0
     var targetBase = 0
+
+
 
     var inputNumString = ""
 
@@ -39,6 +55,43 @@ fun main() {
     if ((targetBase == OCT ) && (typeConversion == "/to")) octToDec(inputNumString)
     if ((targetBase == HEX) && (typeConversion == "/to")) hexToDec(inputNumString)
 }
+///////////////////////////////////////
+///////////////////////////////////////
+
+fun workFun() {
+    println("sourceBase")
+    val sourceBaseEx = readLine()!!.toBigInteger()
+    println("targetBase")
+    val targetBaseEx = readLine()!!.toBigInteger()
+    println("inputNumber")
+    val inputNumberEx = readLine()!!
+    var (quotient, remainder) = inputNumberEx.toBigInteger()
+        .divideAndRemainder(targetBaseEx)
+    var result =BigInteger.valueOf(0)
+
+   for (i in inputNumberEx.length-1 downTo 0) {
+       val targetPow = sourceBaseEx.toDouble()
+        result +=BigInteger.valueOf ((inputNumberEx[i].digitToInt() *
+               targetPow.pow(inputNumberEx.length-i-1)).toLong())
+       println(result)
+   }
+
+       println(result)
+
+       main()
+}
+/*
+
+
+
+formula
+result = inputNumberEx.Index * targetBase.pow(inputNumbEx.index)
+ */
+
+
+
+////////////////////////////////////////
+////////////////////////////////////////
 
 fun decToHex(dec: Int) {
     var hex : String = converter.hexTable[(dec%16)]
@@ -125,6 +178,7 @@ fun binToDec(bin: String) {
 
 
 }
+
 
 
 
