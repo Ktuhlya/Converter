@@ -8,13 +8,20 @@ val hexTable = arrayListOf<String>("0", "1", "2", "3", "4", "5",
     "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
 
 fun main() {
-   print("Enter number in decimal system: > ")
-    val numDec  = readln().toInt()
+    print("Do you want to convert /from decimal or /to decimal? " +
+            "(To quit type /exit) > ")
+    var typeConversion = readLine()!!
+    if (typeConversion == "/exit")  System.exit(0)
+    print("Enter number in decimal system: > ")
+    val inputNum  = readln().toInt()
     print("Enter target base: > ")
     val targetBase = readln().toInt()
-   if (targetBase == BIN) decToBin(numDec)
-    if (targetBase == OCT ) decToOct(numDec)
-    if (targetBase == HEX) hexToDec(numDec)
+    if ((targetBase == BIN) && (typeConversion == "/from")) decToBin(inputNum)
+    if ((targetBase == OCT ) && (typeConversion == "/from")) decToOct(inputNum)
+    if ((targetBase == HEX) && (typeConversion == "/from")) hexToDec(inputNum)
+    if ((targetBase == BIN) && (typeConversion == "/to")) decToBin(inputNum)
+    if ((targetBase == OCT ) && (typeConversion == "/to")) decToOct(inputNum)
+    if ((targetBase == HEX) && (typeConversion == "/to")) hexToDec(inputNum)
 }
 
 fun hexToDec(dec: Int) {
@@ -26,7 +33,7 @@ fun hexToDec(dec: Int) {
         quotient /= 16
         hex = hexTable[remainder] + hex
     } while ( quotient != 0)
-    println("Conversion result: $hex")
+    println(hex)
 
 }
 
@@ -40,7 +47,7 @@ fun decToOct(dec: Int) {
         oct = remainder.toString() + oct
     }
         while (quotient != 0)
-            println("Conversion result: $oct")
+            println(oct)
 
 }
 
@@ -55,9 +62,27 @@ fun decToBin (dec: Int)  {
       bin =  remainder.toString() + bin
 
   } while (quotient != 0)
-  println("Conversion result: $bin")
+  println(bin)
 
 }
+
+
+fun hecToDec(hex: Int) {
+
+}
+
+fun octToDec(oct: Int) {
+
+
+}
+
+fun binToDec(bin: Int) {
+
+
+}
+
+
+
 
 
 
