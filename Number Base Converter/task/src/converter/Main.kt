@@ -1,6 +1,7 @@
+
 package converter
 import java.math.BigInteger
-import java.util.Scanner
+import java.util.*
 import kotlin.math.*
 
 
@@ -46,7 +47,7 @@ fun subMenu() {
     if (str == "/back") {
         main()
     }else{
-        inputNumberEx = str.toString()
+        inputNumberEx = str.uppercase(Locale.getDefault()).toString()
     }
 
 
@@ -98,4 +99,39 @@ fun workFun() {
 
     }
 }
+
+/*
+// Not my solution
+package converter
+
+const val PROMPT = "Enter two numbers in format: {source base} {target base} (To quit type /exit) "
+const val CMD_EXIT = "/exit"
+const val CMD_BACK = "/back"
+const val RESULT = "Conversion result: "
+
+fun main() {
+    do {
+        print(PROMPT)
+        val cmd = readln()
+        if (cmd != CMD_EXIT) {
+            val lst: List<String> = cmd.split(" ")
+            convertToAny(lst[0].toInt(), lst[1].toInt())
+        }
+    } while (cmd != CMD_EXIT)
+}
+
+fun convertToAny(srB: Int, tgB: Int) {
+    do {
+        print("Enter number in base $srB to convert to base $tgB (To go back type /back) ")
+        val cmd = readln()
+        if (cmd != CMD_BACK) {
+            println(RESULT + cmd.toBigInteger(srB).toString(tgB))
+        }
+    } while (cmd != CMD_BACK)
+}
+
+
+
+ */
+
 
