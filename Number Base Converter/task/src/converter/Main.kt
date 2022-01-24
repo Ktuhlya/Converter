@@ -7,10 +7,14 @@ const val BIN = 2
 const val OCT = 8
 const val DEC = 10
 const val HEX = 16
+
 val hexTable = arrayListOf<String>("0", "1", "2", "3", "4", "5",
     "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
 val testList = mutableListOf<String>()
 
+var sourceBaseEx
+var targetBaseEx
+var inputNumberEx
 
 fun main() {
 
@@ -59,7 +63,7 @@ fun main() {
 ///////////////////////////////////////
 
 fun workFun() {
-    println("sourceBase")
+
     var sourceBaseEx = readLine()!!.toBigInteger()
     println("targetBase")
     var targetBaseEx = readLine()!!.toBigInteger()
@@ -69,9 +73,9 @@ fun workFun() {
     var resultF = BigInteger.valueOf(0)
     var result = ""
 
-    var inputNumberEx2 = inputNumberEx.toBigInteger()
+ //   var inputNumberEx2 = inputNumberEx.toBigInteger()
 
- /*   //   from source Base to dec
+    //   from source Base to dec
     for (i in inputNumberEx.length - 1 downTo 0) {
         val targetPow = sourceBaseEx.toDouble()
         resultF += BigInteger.valueOf(
@@ -80,17 +84,20 @@ fun workFun() {
         )
     }
     println(resultF)
-    workFun()
-*/
+
+
     // to target base from dec
+
+    var inputNumberEx2 = resultF
     do {
         var (quotient, remainder) =inputNumberEx2.divideAndRemainder(targetBaseEx)
-        result = remainder.toString() + result
+        result = testList[remainder.toInt()] + result
         inputNumberEx2 = quotient
 
     }
         while (quotient.toInt() != 0)
         println(result)
+         workFun()
 }
 
 /*
